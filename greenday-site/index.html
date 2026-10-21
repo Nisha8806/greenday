@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IGEN GREENDAY 2026 – Digital Green Action Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d9e8da;--card:#f7fbf6;--ink:#1c3326;--mut:#476152;--line:#b6cfba;--g:#2a7a47;--gd:#2f6b4a;--heat:#e8912a;--ok:#1f6f3b;--bad:#a8281f;--wait:#8a5700;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.2;margin:0 0 8px}
+a{color:var(--g)}
+:focus-visible{outline:3px solid var(--heat);outline-offset:2px}
+.w{max-width:880px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--gd);color:#fff;box-shadow:0 2px 8px rgba(20,50,30,.18)}
+nav .w{display:flex;gap:4px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
+nav b{margin-right:auto;white-space:nowrap;font-family:"Bricolage Grotesque",sans-serif;padding-right:10px}
+nav a{color:#fff;text-decoration:none;padding:9px 13px;border-radius:99px;white-space:nowrap;font-size:15px}
+nav a.on{background:#fff;color:var(--gd);font-weight:600}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--gd);z-index:11}
+main{padding:20px 0 48px;min-height:70vh}
+.hero{background:var(--gd);color:#fff;border-radius:20px;padding:30px 22px;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,6vw,44px);font-weight:800}
+.hero p{color:#e2f0e5;margin:6px 0 18px;max-width:56ch}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:13px 20px;font:600 16px "Source Sans 3",sans-serif;cursor:pointer;background:var(--heat);color:#1b1205;text-decoration:none;display:inline-block;min-height:46px}
+.btn.g{background:var(--g);color:#fff}.btn.o{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.s{padding:9px 14px;font-size:15px;min-height:40px}.btn:disabled{opacity:.6;cursor:wait}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(30,70,45,.08)}
+a.card{display:block;color:inherit;text-decoration:none}
+a.card:hover{border-color:var(--c,var(--g))}
+.stat strong{display:block;font:800 32px "Bricolage Grotesque",sans-serif;color:var(--g)}
+.stat span{color:var(--mut)}
+.cat{border-left:6px solid var(--c)}
+.cat h3{color:var(--c)}
+.chip{display:inline-block;border-radius:99px;padding:3px 11px;font-size:14px;font-weight:600;color:#fff;margin:2px 4px 2px 0}
+.st{font-weight:600;font-size:14px;padding:2px 10px;border-radius:99px;border:1.5px solid currentColor;white-space:nowrap}
+.st.verified{color:var(--ok)}.st.rejected{color:var(--bad)}.st.pending{color:var(--wait)}
+h2{font-size:26px;margin-top:28px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps li{display:flex;gap:12px;align-items:flex-start}
+.steps i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;font:700 15px/30px "Bricolage Grotesque",sans-serif;text-align:center;font-style:normal}
+label.f{display:block;font-weight:600;margin:18px 0 6px}
+.hint{font-weight:400;color:var(--mut);font-size:14px}
+input,select,textarea{width:100%;padding:13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;min-height:48px}
+textarea{min-height:120px}
+.pick{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.pick label{border:2px solid var(--line);border-radius:14px;padding:13px;cursor:pointer;display:block;background:#fff}
+.pick input{width:auto;min-height:0;margin-right:6px}
+.pick label:has(input:checked){border-color:var(--c,var(--g));background:color-mix(in srgb,var(--c,var(--g)) 12%,#fff)}
+.pts{background:var(--heat);color:#1b1205;border-radius:99px;padding:2px 10px;font-weight:700;font-size:14px;white-space:nowrap}
+.empty{padding:26px;border:1.5px dashed var(--line);border-radius:16px;color:var(--mut);text-align:center;background:var(--card)}
+.item{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;justify-content:space-between}
+.item img{width:84px;height:64px;object-fit:cover;border-radius:8px;cursor:zoom-in}
+.rank{font:800 26px "Bricolage Grotesque",sans-serif;width:42px}
+.bar{height:8px;border-radius:99px;background:var(--line);margin-top:10px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--g);border-radius:99px}
+details summary{cursor:pointer;color:var(--g);font-weight:600;margin-top:8px;min-height:32px}
+.mut{color:var(--mut)}.small{font-size:14px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30;max-width:90vw}
+#toast.on{opacity:1}
+#zoom{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;place-items:center;z-index:40;cursor:zoom-out}
+#zoom img{max-width:94vw;max-height:90vh;border-radius:10px}
+footer{background:var(--gd);color:#e2f0e5;padding:22px 0;font-size:15px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="w" id="nav"></div></nav>
+<main><div class="w" id="view"></div></main>
+<footer>IGEN GREENDAY 2026 · 22 Oct – 2 Nov · Earth · Water · Fire · Air · Space · Advancing the UN SDGs<br><a href="#verify" style="color:#e2f0e5">Organiser login</a></footer>
+<div id="toast" role="status"></div><div id="zoom"><img alt="Evidence photo"></div>
+<script>
+const CONFIG={nominationFormLink:"",linkedinGroup:"https://www.linkedin.com/groups/40616269/"};
+const ACT={
+A:{n:"Awareness & Implementation",pts:10,c:"#1565c0",d:"Create awareness among at least 9 citizens.",l:[["Water Conservation Awareness","Water"],["Energy Conservation Awareness (#ENSAV9MANTRAS)","Fire"],["Tree Plantation & Green Cover Awareness","Earth"],["Clean Air & Green Mobility Awareness","Air"],["Soil Conservation Awareness","Earth"],["Waste Segregation & Plastic Reduction Awareness","Earth"],["Biodiversity Conservation Awareness","Earth"],["Sustainable Food & Food Waste Reduction Awareness","Earth"],["Climate Action & Sustainable Living Awareness","Space"]]},
+B:{n:"Sustainability Product Distribution",pts:15,c:"#2e7d32",d:"Give sustainability products to households or individuals.",l:[["LED Bulb Distribution – 3 households","Fire"],["Water Flow Controller Distribution – 5 households","Water"],["Waste Segregation Bin Distribution – 3 households","Earth"],["Reusable Cloth Bag Distribution – 5 individuals","Earth"],["Native Sapling Distribution – 5 individuals","Earth"],["Household Compost Bin Distribution – 3 households","Earth"],["Solar Lamp Distribution – 1 household","Fire"],["Reusable Water Bottle Distribution – 5 individuals","Water"],["Native Seed Kit Distribution – 5 individuals","Earth"]]},
+C:{n:"Green Action Projects",pts:20,c:"#6a1b9a",d:"Finish one project within one week and document the outcome.",l:[["One-Day Energy Detective Project (SDG 7)","Fire"],["One-Day Home Water Audit Project (SDG 6)","Water"],["Nine-Hour Food Waste Audit Project (SDG 12)","Earth"],["Industry Waste Audit Project (SDG 12)","Earth"],["Paper Consumption Audit Project (SDG 12)","Space"],["Rainwater Harvesting Inspection Project (SDG 6)","Water"],["Biodiversity Audit Project (SDG 15)","Earth"],["Campus Water Leak Detection Project (SDG 6)","Water"],["Campus Plastic Usage Audit Project (SDG 12)","Earth"]]}};
+const EL={Earth:["#8d6e63","🌍","Trees, soil, biodiversity"],Water:["#0288d1","💧","Conservation, clean-up"],Fire:["#d9620a","🔥","Energy, solar, clean cooking"],Air:["#546e7a","🌬️","Mobility, pollution reduction"],Space:["#5e35b1","🌌","Awareness, digital advocacy"]};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=i=>i?new Date(i).toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"}):"";
+let S={orgs:[],actions:[],members:[]},ME={id:"",name:"",admin:false},mode="wait",dbc=null,lastCaption="";
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2800)}
+
+/* ---------- backend: Google Sheet through Apps Script ---------- */
+const API="https://script.google.com/macros/s/AKfycbym8iZ-gRKkqa9Rny4aUujQEqrl9DaDC5hqg9i-NhBJh1KKiclh_rjmGVlcoTeg9GmO/exec";
+let PASS="";try{PASS=sessionStorage.getItem("igenpw")||""}catch(e){}
+ME.admin=!!PASS;
+try{ME.id=localStorage.getItem("igen_uid")||"";if(!ME.id){ME.id="u"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);localStorage.setItem("igen_uid",ME.id)}}catch(e){ME.id="u"+Math.random().toString(36).slice(2,10)}
+async function load(){
+ if(API.startsWith("PASTE")){mode="offline";render(true);return}
+ try{const d=await (await fetch(API+"?action=all")).json(),first=mode!=="ok";
+  S={orgs:d.orgs||[],members:d.members||[],actions:d.actions||[],pending:[]};if(PASS){try{S.pending=(await post({op:"pending",pass:PASS})).list||[]}catch(e){}}mode="ok";render(first)}
+ catch(e){if(mode!=="ok"){mode="offline";render(true)}}}
+async function post(o){const d=await (await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(o)})).json();if(!d.ok)throw new Error(d.error||"Failed");return d}
+async function add(col,o){const d=await post({op:"add",col,data:o});await load();return d.id}
+async function upd(col,id,p){await post({op:"verify",id,status:p.status,pass:PASS});await load()}
+async function putMember(o){await post({op:"member",data:{...o,id:ME.id}});await load()}
+function boot(){load();setInterval(()=>{if(mode==="ok")load()},30000)}
+
+/* ---------- derived data ---------- */
+const me=()=>S.members.find(m=>m.id===ME.id);
+const board=()=>S.orgs.map(o=>{const a=S.actions.filter(x=>x.orgId===o.id),v=a.filter(x=>x.status==="verified");
+ return{...o,members:S.members.filter(m=>m.orgId===o.id).length,total:a.length,ver:v.length,pts:v.reduce((s,x)=>s+x.points,0),list:v}}).sort((a,b)=>b.pts-a.pts||b.ver-a.ver||a.name.localeCompare(b.name));
+const st=s=>`<span class="st ${s}">${s==="verified"?"✓ Verified":s==="rejected"?"✕ Not approved":"⏳ Waiting for review"}</span>`;
+const elchip=e=>`<span class="chip" style="background:${EL[e][0]}">${EL[e][1]} ${e}</span>`;
+
+/* ---------- views ---------- */
+const V={
+home(){const b=board(),vs=S.actions.filter(a=>a.status==="verified").length;
+ return `<img src="banner.jpg" alt="IGEN GREENDAY 2026 – Small Actions, Big Impact" style="width:100%;height:auto;border-radius:16px;display:block;margin-bottom:14px" onerror="this.remove()"><div class="hero"><h1>Hammer the Heat, Defend 1.5°C</h1><p><b>My Green Action, My Climate Impact!</b> 22 Oct – 2 Nov 2026 · Pick one action, do it, share it on LinkedIn and earn points for you and your organisation.</p>
+ <div class="row"><a class="btn" href="#${me()?"submit":"join"}">${me()?"Submit an action":"Get started"}</a><a class="btn o" href="#board">See leaderboard</a></div></div>
+ <div class="grid">${[[S.orgs.length,"Organisations"],[S.members.length,"Participants"],[S.actions.length,"Actions submitted"],[vs,"Verified actions"]].map(x=>`<div class="card stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join("")}</div>
+ <h2>Choose ONE category</h2><div class="grid">${Object.entries(ACT).map(([k,c])=>`<a class="card cat" href="#${me()?"submit":"join"}" style="--c:${c.c}"><h3>${k}) ${c.n}</h3><p>${c.d}</p><p class="small mut">${c.l.length} activities + your own idea · <span class="pts">${c.pts} pts</span></p></a>`).join("")}</div>
+ <h2>How it works</h2><div class="card"><ol class="steps"><li><i>1</i><span><b>Join</b> with your name and choose your organisation.</span></li><li><i>2</i><span><b>Pick</b> one category and activity.</span></li><li><i>3</i><span><b>Post</b> on LinkedIn and submit your post link.</span></li><li><i>4</i><span><b>Get verified</b> by the IGEN team and your points count on the leaderboard.</span></li><li><i>5</i><span><b>Share</b> on LinkedIn with #igenGreenDay2026 and submit the certification form.</span></li></ol></div>
+ <h2>Five elements (Panchabhuta)</h2><div class="card">${Object.entries(EL).map(([k,v])=>`<span class="chip" style="background:${v[0]}">${v[1]} ${k} – ${v[2]}</span>`).join("")}</div>
+ <h2>Top organisations</h2>${b.length?b.slice(0,3).map((o,i)=>`<div class="card item" style="margin-bottom:8px"><span><b>${i+1}. ${esc(o.name)}</b></span><span class="pts">${o.pts} pts</span></div>`).join(""):`<div class="empty">No organisations yet.</div>`}`},
+
+join(){const m=me()||{},orgs=S.orgs.slice().sort((a,b)=>a.name.localeCompare(b.name));
+ return `<h1>${m.name?"Your profile":"Join IGEN GREENDAY"}</h1><p class="mut">Takes under a minute.</p>
+ <form class="card" id="fJoin"><label class="f" for="jn">Your full name (or group name)</label><input id="jn" name="name" required maxlength="100" value="${esc(m.name||ME.name)}" autocomplete="name"><label class="f" for="jk">Participating as</label><select id="jk" name="kind"><option ${m.kind!=="Group"?"selected":""}>Individual</option><option ${m.kind==="Group"?"selected":""}>Group</option></select>
+ <label class="f" for="jo">Your organisation <span class="hint">(college, industry or NGO)</span></label>
+ <select id="jo" name="org"><option value="">I’m an independent participant</option>${orgs.map(o=>`<option value="${esc(o.id)}" ${m.orgId===o.id?"selected":""}>${esc(o.name)}</option>`).join("")}</select>
+ 
+ <button class="btn g" style="margin-top:14px">Save and continue</button></form>
+ `},
+
+submit(){const m=me();
+ return `<h1>Submit a green action</h1><p class="mut">Posting as <b>${esc(m.name)}</b>${m.orgId?" · "+esc((S.orgs.find(o=>o.id===m.orgId)||{}).name||""):" · Independent"} · <a href="#join">change</a></p>
+ <form class="card" id="fAct"><label class="f">1. Choose ONE category</label><div class="pick">${Object.entries(ACT).map(([k,c])=>`<label style="--c:${c.c}"><input type="radio" name="cat" value="${k}" required><b>${k}) ${c.n}</b><br><span class="small mut">${c.d} <span class="pts">${c.pts} pts</span></span></label>`).join("")}</div>
+ <div id="step2" hidden><label class="f" for="ac">2. Choose an activity</label><select id="ac" name="act" required></select>
+ <div id="own" hidden><label class="f" for="ow">Describe your own idea</label><input id="ow" name="own" maxlength="200"></div>
+ <label class="f" for="el">3. Panchabhuta element <span class="hint">(suggested for you, change if needed)</span></label><select id="el" name="el" required>${Object.entries(EL).map(([k,v])=>`<option value="${k}">${v[1]} ${k} – ${v[2]}</option>`).join("")}</select>
+ <label class="f" for="ti">4. Give it a short title</label><input id="ti" name="title" required maxlength="200" placeholder="e.g. Water saving talk for 12 neighbours">
+ <label class="f" for="de">5. What did you do and what changed? <span class="hint">(people reached, products given, results)</span></label><textarea id="de" name="desc" required></textarea>
+ <div class="card" style="margin-top:20px;border-left:6px solid var(--g)"><h3>IGEN GREENDAY 2026 – Green Action Submission Procedure</h3>
+  <p><b>Join the LinkedIn Group:</b> <a href="https://www.linkedin.com/groups/40616269/" target="_blank" rel="noopener">linkedin.com/groups/40616269</a></p>
+  <ol class="steps">
+  <li><i>1</i><span><b>Implement your green action:</b> carry out your selected activity using your own innovative ideas and practical approach.</span></li>
+  <li><i>2</i><span><b>Share your action:</b> upload photographs or videos of the implementation to the IGEN GREENDAY LinkedIn Group, with a brief write-up explaining the action and its impact. Use the hashtags <b>#igenGreenDay2026 #igenGreenDay</b>.</span></li>
+  <li><i>3</i><span><b>Submit your LinkedIn post link for verification:</b> copy the URL of your published LinkedIn post and submit it through the designated verification form.</span></li></ol>
+  <p class="small mut" style="margin-bottom:0"><b>Note:</b> ensure your post clearly documents the implemented Green Action and its outcomes for verification and recognition.</p></div>
+  <label class="f" for="ln">6. LinkedIn post link <span class="hint">(post in the IGEN GREENDAY group first, then paste the link)</span></label><input id="ln" name="link" type="url" required placeholder="https://www.linkedin.com/posts/...">
+ <button class="btn g" id="sb" style="margin-top:16px;width:100%">Submit for verification</button></div></form>`},
+
+done(){return `<div class="card"><h1>🎉 Action submitted!</h1><p>The IGEN team will review your LinkedIn post and details. You can follow the status under <a href="#mine">My actions</a>.</p>
+ <h3>Two last steps</h3><ol><li>Post on the <a href="${CONFIG.linkedinGroup}" target="_blank" rel="noopener">LinkedIn group</a>. Copy this write-up:<textarea id="cap" readonly>${esc(lastCaption)}</textarea><button class="btn s" data-copy>Copy write-up</button></li>
+ <li style="margin-top:12px">Fill the <a href="${CONFIG.nominationFormLink||"#"}" ${CONFIG.nominationFormLink?'target="_blank" rel="noopener"':'data-soon'}>certification nomination form</a>.</li></ol>
+ <div class="row"><a class="btn g" href="#submit">Submit another</a><a class="btn o" href="#board" style="color:var(--ink)">View leaderboard</a></div></div>`},
+
+mine(){const l=S.actions.filter(a=>a.userId===ME.id).sort((a,b)=>b.createdAt.localeCompare(a.createdAt)),p=l.filter(a=>a.status==="verified").reduce((s,a)=>s+a.points,0);
+ return `<h1>My actions</h1><div class="grid" style="margin-bottom:14px"><div class="card stat"><strong>${l.length}</strong><span>Submitted</span></div><div class="card stat"><strong>${l.filter(a=>a.status==="verified").length}</strong><span>Verified</span></div><div class="card stat"><strong>${p}</strong><span>Points earned</span></div></div>`+
+ (l.length?l.map(a=>`<div class="card item" style="margin-bottom:10px"><div><b>${esc(a.title)}</b><br><span class="small mut">${esc(a.cat)}) ${esc(a.activity)} · ${fmt(a.createdAt)}</span><br>${elchip(a.el)} <span class="pts">${a.points} pts</span></div><div>${st(a.status)}</div>${a.link&&/^https?:\/\//.test(a.link)?`<a href="${esc(a.link)}" target="_blank" rel="noopener">View LinkedIn post</a>`:""}</div>`).join(""):`<div class="empty">You haven’t submitted anything yet. <a href="#submit">Submit your first action</a>.</div>`)},
+
+board(){const b=board();
+ return `<h1>Organisation leaderboard</h1><p class="mut">Ranked by verified points only. Tap an organisation to see its verified actions.</p>`+
+ (b.length?b.map((o,i)=>`<div class="card" style="margin-bottom:10px"><div class="item"><div class="row" style="flex-wrap:nowrap"><span class="rank">${["🥇","🥈","🥉"][i]||i+1}</span><div><b>${esc(o.name)}</b><br><span class="small mut">${o.members} members · ${o.ver} verified of ${o.total}</span></div></div><span class="pts">${o.pts} pts</span></div><div class="bar" aria-hidden="true"><span style="width:${b[0].pts?Math.round(o.pts/b[0].pts*100):0}%"></span></div>
+ <details><summary>Verified actions (${o.ver})</summary>${o.list.length?o.list.map(a=>`<p class="small" style="margin:6px 0">• ${esc(a.title)} <span class="mut">by ${esc(a.userName)} · ${a.points} pts</span></p>`).join(""):`<p class="small mut">None yet.</p>`}</details></div>`).join(""):`<div class="empty">No organisations yet. <a href="#join">Register one</a>.</div>`)},
+
+register(){return `<h1>Register your organisation</h1><p class="mut">For Higher Education Institutions, Industries and NGOs. The organiser checks each request. Once approved, your organisation appears in the list when participants join, and earns a place on the leaderboard.</p>
+<form class="card" id="fOrg"><label class="f" for="on">Organisation name</label><input id="on" name="name" required maxlength="200" autocomplete="organization">
+<label class="f" for="ot">Type</label><select id="ot" name="type" required><option value="">Select type</option><option>Higher Education Institution</option><option>Industry</option><option>NGO</option></select>
+<label class="f" for="oc">Contact person</label><input id="oc" name="contact" required maxlength="100" autocomplete="name">
+<label class="f" for="oe">Email</label><input id="oe" name="email" type="email" required maxlength="150" autocomplete="email">
+<label class="f" for="op">Phone <span class="hint">(optional)</span></label><input id="op" name="phone" type="tel" maxlength="30" autocomplete="tel">
+<label class="f" for="oy">City / Country</label><input id="oy" name="city" maxlength="100">
+<button class="btn g" style="margin-top:18px;width:100%">Register organisation</button></form>`},
+verify(){if(!ME.admin)return `<h1>Organiser login</h1><form class="card" id="fPass"><label class="f" for="pw">Passcode</label><input id="pw" name="pw" type="password" required autocomplete="current-password"><button class="btn g" style="margin-top:14px">Open review page</button></form>`;
+ const p=S.actions.filter(a=>a.status==="pending").sort((a,b)=>a.createdAt.localeCompare(b.createdAt)),r=S.actions.filter(a=>a.status!=="pending").sort((a,b)=>(b.verifiedAt||"").localeCompare(a.verifiedAt||"")).slice(0,15);
+ return `<h1>Review submissions</h1>${S.pending&&S.pending.length?`<h3>Organisation registrations (${S.pending.length})</h3>`+S.pending.map(o=>`<div class="card item" style="margin-bottom:10px"><div style="flex:1;min-width:220px"><b>${esc(o.name)}</b> <span class="small mut">· ${esc(o.type)}</span><br><span class="small">${esc(o.contact)} · ${esc(o.email)} · ${esc(o.phone||"")} · ${esc(o.city||"")}</span></div><div class="row"><button class="btn g s" data-org="approved" data-id="${esc(o.id)}">Approve</button><button class="btn o s" style="color:var(--bad)" data-org="rejected" data-id="${esc(o.id)}">Reject</button></div></div>`).join(""):""}<h3>Waiting (${p.length})</h3>`+(p.length?p.map(a=>`<div class="card item" style="margin-bottom:10px"><div style="flex:1;min-width:220px"><b>${esc(a.title)}</b><br><span class="small mut">${esc(a.userName)} · ${esc(a.orgName||"Independent")} · ${fmt(a.createdAt)}</span><br>${elchip(a.el)} <span class="pts">${a.points} pts</span><p class="small">${esc(a.activity)}</p><p class="small">${esc(a.desc)}</p>
+ <div class="row"><button class="btn g s" data-v="verified" data-id="${esc(a.id)}">Approve</button><button class="btn o s" style="color:var(--bad)" data-v="rejected" data-id="${esc(a.id)}">Reject</button></div></div>${a.link&&/^https?:\/\//.test(a.link)?`<a href="${esc(a.link)}" target="_blank" rel="noopener">View LinkedIn post</a>`:""}</div>`).join(""):`<div class="empty">All caught up. Nothing is waiting for review.</div>`)+
+ `<h3 style="margin-top:22px">Recently reviewed</h3>`+(r.length?r.map(a=>`<div class="card item" style="margin-bottom:8px"><span>${esc(a.title)} <span class="small mut">· ${esc(a.userName)}</span></span>${st(a.status)}</div>`).join(""):`<p class="mut">No reviews yet.</p>`)}
+};
+
+/* ---------- shell ---------- */
+const FORMS=["join","submit","register"];
+function chrome(r){const m=me();
+ const L=[["home","Home"],["board","Leaderboard"],["register","Register org"],["join",m?"Profile":"Join"],["submit","Submit action"],["mine","My actions"]];if(ME.admin)L.push(["verify","Review"]);
+ $("#nav").innerHTML=`<b><img src="logo.png" alt="IGEN GREENDAY 2026" onerror="this.replaceWith('🌍 IGEN GREENDAY')" style="height:40px;width:auto;display:block;background:#fff;padding:3px 10px;border-radius:10px"></b>`+L.map(x=>`<a href="#${x[0]}" ${r===x[0]||(r==="done"&&x[0]==="mine")?'class="on" aria-current="page"':""}>${x[1]}</a>`).join("")}
+function render(force){let r=location.hash.slice(1)||"home";if(!V[r])r="home";
+ if(mode==="wait"){chrome(r);if(!$("#view").innerHTML)$("#view").innerHTML=`<div class="empty">Loading…</div>`;return}
+ if(mode==="offline"){chrome("");$("#view").innerHTML=`<div class="card">${API.startsWith("PASTE")?"<h1>Setup needed</h1><p>The Google Sheet link is not added yet. Open index.html in a text editor, replace PASTE_WEB_APP_URL_HERE with your Web app URL, save and reload.</p>":"<h1>Can’t connect</h1><p>Couldn’t reach the server. Check your internet connection and try again.</p>"}<button class="btn g" onclick="location.reload()">Reload page</button></div>`;return}
+ if((r==="submit"||r==="mine"&&false)&&!me()){toast("Please add your name first.");location.hash="join";return}
+ chrome(r);const v=$("#view");
+ if(!force&&FORMS.includes(r)&&v.dataset.r===r)return;
+ if(r==="done"&&!lastCaption){location.hash="submit";return}
+ v.innerHTML=V[r]();v.dataset.r=r;if(force)scrollTo(0,0)}
+addEventListener("hashchange",()=>render(true));
+
+/* ---------- events ---------- */
+document.addEventListener("change",e=>{const t=e.target;
+ if(t.name==="cat"){const c=ACT[t.value],a=$("#ac");a.innerHTML=`<option value="">Select an activity</option>`+c.l.map((x,i)=>`<option value="${i}">${esc(x[0])}</option>`).join("")+`<option value="own">Own idea</option>`;$("#step2").hidden=false;$("#own").hidden=true}
+ if(t.id==="ac"){const c=ACT[document.querySelector('[name=cat]:checked').value];$("#own").hidden=t.value!=="own";$("#ow").required=t.value==="own";if(t.value!==""&&t.value!=="own")$("#el").value=c.l[+t.value][1]}
+ });
+document.addEventListener("click",async e=>{const t=e.target;
+ if(t.dataset.zoom!==undefined){$("#zoom img").src=t.src;$("#zoom").style.display="grid"}
+ else if(t.closest("#zoom"))$("#zoom").style.display="none";
+ if(t.dataset.copy!==undefined){const x=$("#cap");try{await navigator.clipboard.writeText(x.value)}catch(_){x.select();document.execCommand("copy")}toast("Copied. Paste it in the LinkedIn group")}
+ if(t.dataset.soon!==undefined){e.preventDefault();toast("The form link will be shared by the organisers.")}
+ if(t.dataset.org){t.disabled=true;try{await post({op:"orgstatus",id:t.dataset.id,status:t.dataset.org,pass:PASS});await load();toast(t.dataset.org==="approved"?"Organisation approved":"Registration rejected")}catch(x){toast("Couldn’t save. Try again.");t.disabled=false}}
+ if(t.dataset.v){t.disabled=true;try{await upd("actions",t.dataset.id,{status:t.dataset.v,verifiedAt:new Date().toISOString()});toast(t.dataset.v==="verified"?"Approved":"Marked as not approved")}catch(x){toast("Couldn’t save. Check your access and try again.");t.disabled=false}}});
+document.addEventListener("submit",async e=>{e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f)),b=f.querySelector("button");b.disabled=true;
+ try{
+  if(f.id==="fPass"){await post({op:"check",pass:d.pw});PASS=d.pw;ME.admin=true;try{sessionStorage.setItem("igenpw",PASS)}catch(_){}toast("Welcome, organiser");render(true);b.disabled=false;return}
+  if(f.id==="fOrg"){await post({op:"org",data:{name:d.name.trim(),type:d.type,contact:d.contact.trim(),email:d.email.trim(),phone:(d.phone||"").trim(),city:(d.city||"").trim()}});f.reset();toast("Registration received. It appears in the list once the organiser approves it.");b.disabled=false;return}
+  if(f.id==="fJoin"){await putMember({name:d.name.trim(),orgId:d.org||null,kind:d.kind||"Individual"});toast("Profile saved");location.hash="submit";setTimeout(()=>render(true),50)}
+  if(f.id==="fAct"){const m=me(),c=ACT[d.cat],own=d.act==="own",name=own?d.own.trim():c.l[+d.act][0],org=S.orgs.find(o=>o.id===m.orgId),link=(d.link||"").trim();
+   if(!/^https:\/\/([\w-]+\.)?linkedin\.com\//i.test(link)){toast("Please paste a valid LinkedIn post link (https://www.linkedin.com/...)");b.disabled=false;return}
+   await add("actions",{userId:ME.id,userName:m.name,orgId:m.orgId||null,orgName:org?org.name:null,cat:d.cat,activity:name,el:d.el,title:d.title.trim(),desc:d.desc.trim(),points:c.pts,status:"pending",link,verifiedAt:null});
+   lastCaption=`🌍 IGEN GREENDAY 2026 – My Green Action!\n\n${d.title.trim()}\n\n${d.desc.trim()}\n\nElement: ${d.el}\nHammer the Heat, Defend 1.5°C!\n#igenGreenDay2026 #igenGreenDay #Act4Green`;
+   location.hash="done";render(true)}
+ }catch(x){toast(/^(Wrong passcode|Already|Invalid)/.test(x.message)?x.message:"Couldn’t save. Check your internet and try again.");b.disabled=false}});
+render();boot();
+</script>
+</body>
+</html>
