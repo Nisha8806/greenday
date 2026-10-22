@@ -66,7 +66,154 @@ details summary{cursor:pointer;color:var(--g);font-weight:600;margin-top:8px;min
 #zoom{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;place-items:center;z-index:40;cursor:zoom-out}
 #zoom img{max-width:94vw;max-height:90vh;border-radius:10px}
 footer{background:var(--gd);color:#e2f0e5;padding:22px 0;font-size:15px;text-align:center}
+/* Certificate design */
+.certificate {
+  position: relative;
+  background: #fffdf5;
+  border: 7px double #b88a2c;
+  outline: 1px solid #145332;
+  outline-offset: -15px;
+  padding: 30px;
+  color: #123c2b;
+  min-height: 500px;
+  overflow: hidden;
+}
+.cert-brand {
+  font-size: 30px;
+  font-weight: 800;
+  color: #145332;
+}
+.cert-title {
+  text-align: center;
+  font: bold 36px Georgia, serif;
+  color: #145332;
+  margin: 24px 0 10px;
+}
+.cert-ribbon {
+  text-align: center;
+  background: #c59a36;
+  color: #173d2b;
+  padding: 8px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+.cert-recipient {
+  text-align: center;
+  font: italic 36px Georgia, serif;
+  margin: 20px 0;
+  overflow-wrap: anywhere;
+}
+.cert-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cert-detail {
+  border-bottom: 1px solid #d8dfd6;
+  padding: 8px 0;
+}
+.cert-watermark {
+  position: absolute;
+  top: 45%;
+  left: 4%;
+  transform: rotate(-25deg);
+  color: rgba(90, 90, 90, .16);
+  font-size: 28px;
+  font-weight: bold;
+  pointer-events: none;
+}
+@media print {
+ @page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.printing-cert * {
+    visibility: hidden !important;
+  }
+
+  body.printing-cert .print-target,
+  body.printing-cert .print-target * {
+    visibility: visible !important;
+  }
+
+  body.printing-cert .print-target {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 297mm !important;
+    height: 210mm !important;
+    min-height: 0 !important;
+    max-height: 210mm !important;
+    margin: 0 !important;
+    padding: 8mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  body.printing-cert .certificate {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  body.printing-cert nav,
+  body.printing-cert footer,
+  body.printing-cert .no-print {
+    display: none !important;
+  }
+}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.cert-signature {
+  text-align: center;
+  width: 240px;
+  margin: 16px 0 0 auto;
+  font-size: 13px;
+}
+
+.signature-space {
+
+  height: 38px;
+}
+
+.signature-line {
+  border-top: 1px solid #145332;
+  margin-bottom: 5px;
+}
+.signature-image {
+  max-width: 150px;
+  max-height: 38px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.signature-space {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -117,7 +264,7 @@ home(){const b=board(),vs=S.actions.filter(a=>a.status==="verified").length;
  <div class="row"><a class="btn" href="#${me()?"submit":"join"}">${me()?"Submit an action":"Get started"}</a><a class="btn o" href="#board">See leaderboard</a></div></div>
  <div class="grid">${[[S.orgs.length,"Organisations"],[S.members.length,"Participants"],[S.actions.length,"Actions submitted"],[vs,"Verified actions"]].map(x=>`<div class="card stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join("")}</div>
  <h2>Choose ONE category</h2><div class="grid">${Object.entries(ACT).map(([k,c])=>`<a class="card cat" href="#${me()?"submit":"join"}" style="--c:${c.c}"><h3>${k}) ${c.n}</h3><p>${c.d}</p><p class="small mut">${c.l.length} activities + your own idea · <span class="pts">${c.pts} pts</span></p></a>`).join("")}</div>
- <h2>How it works</h2><div class="card"><ol class="steps"><li><i>1</i><span><b>Join</b> with your name and choose your organisation.</span></li><li><i>2</i><span><b>Pick</b> one category and activity.</span></li><li><i>3</i><span><b>Post</b> on LinkedIn and submit your post link.</span></li><li><i>4</i><span><b>Get verified</b> by the IGEN team and your points count on the leaderboard.</span></li><li><i>5</i><span><b>Share</b> on LinkedIn with #igenGreenDay2026 and submit the certification form.</span></li></ol></div>
+ <h2>How it works</h2><div class="card"><ol class="steps"><li><i>1</i><span><b>Join</b> with your name and choose your organisation.</span></li><li><i>2</i><span><b>Pick</b> one category and activity.</span></li><li><i>3</i><span><b>Post</b> on LinkedIn and submit your post link.</span></li><li><i>4</i><span><b>Get verified</b> by the IGEN team and your points count on the leaderboard.</span></li><li><i>5</i><span><b>Share</b> on LinkedIn with #igenGreenDay2026.</span></li></ol></div>
  <h2>Five elements (Panchabhuta)</h2><div class="card">${Object.entries(EL).map(([k,v])=>`<span class="chip" style="background:${v[0]}">${v[1]} ${k} – ${v[2]}</span>`).join("")}</div>
  <h2>Top organisations</h2>${b.length?b.slice(0,3).map((o,i)=>`<div class="card item" style="margin-bottom:8px"><span><b>${i+1}. ${esc(o.name)}</b></span><span class="pts">${o.pts} pts</span></div>`).join(""):`<div class="empty">No organisations yet.</div>`}`},
 
@@ -150,7 +297,7 @@ submit(){const m=me();
 
 done(){return `<div class="card"><h1>🎉 Action submitted!</h1><p>The IGEN team will review your LinkedIn post and details. You can follow the status under <a href="#mine">My actions</a>.</p>
  <h3>Two last steps</h3><ol><li>Post on the <a href="${CONFIG.linkedinGroup}" target="_blank" rel="noopener">LinkedIn group</a>. Copy this write-up:<textarea id="cap" readonly>${esc(lastCaption)}</textarea><button class="btn s" data-copy>Copy write-up</button></li>
- <li style="margin-top:12px">Fill the <a href="${CONFIG.nominationFormLink||"#"}" ${CONFIG.nominationFormLink?'target="_blank" rel="noopener"':'data-soon'}>certification nomination form</a>.</li></ol>
+
  <div class="row"><a class="btn g" href="#submit">Submit another</a><a class="btn o" href="#board" style="color:var(--ink)">View leaderboard</a></div></div>`},
 
 mine(){const l=S.actions.filter(a=>a.userId===ME.id).sort((a,b)=>b.createdAt.localeCompare(a.createdAt)),p=l.filter(a=>a.status==="verified").reduce((s,a)=>s+a.points,0);
@@ -170,6 +317,121 @@ register(){return `<h1>Register your organisation</h1><p class="mut">For Higher 
 <label class="f" for="op">Phone <span class="hint">(optional)</span></label><input id="op" name="phone" type="tel" maxlength="30" autocomplete="tel">
 <label class="f" for="oy">City / Country</label><input id="oy" name="city" maxlength="100">
 <button class="btn g" style="margin-top:18px;width:100%">Register organisation</button></form>`},
+certificates() {
+  const m = me();
+
+  if (!m) {
+    return `<h1>My Certificate</h1>
+      <div class="empty">
+        Please save your profile first.
+        <a href="#join">Open profile</a>
+      </div>`;
+  }
+
+  const approved = S.actions.filter(a =>
+    a.userId === ME.id &&
+    a.status === "verified"
+  );
+
+  if (!approved.length) {
+    return `<h1>My Certificate</h1>
+      <div class="empty">
+        Your certificate will appear here after
+        the IGEN team approves your green action.
+      </div>`;
+  }
+
+  return `<h1 class="no-print">My Certificate</h1>
+    <p class="no-print">
+      Your approved certificates are listed below.
+    </p>` +
+    approved.map(a => {
+      const org = S.orgs.find(o => o.id === a.orgId);
+      const id = "IGEN-GD26-" +
+        String(a.id || "").replace(/[^a-z0-9]/gi, "")
+        .slice(-10).toUpperCase();
+
+      return `
+        <section class="certificate"
+          id="cert-${esc(a.id)}"
+          style="margin:18px 0">
+
+          <div class="cert-watermark">
+            SAMPLE TEMPLATE — NOT AN OFFICIAL CERTIFICATE
+          </div>
+
+          <div class="cert-brand">
+            <img src="logo.png"
+              alt="IGEN logo"
+              style="width:160px;max-height:75px;object-fit:contain">
+          </div>
+
+          <p style="text-align:center">
+            Knowledge • People • Planet • Prosperity
+          </p>
+
+          <h2 class="cert-title">PROJECT COMPLETION</h2>
+          <div class="cert-ribbon">CERTIFICATE</div>
+
+          <p style="text-align:center">PRESENTED TO</p>
+
+          <div class="cert-recipient">
+            ${esc(m.name || a.userName)}
+          </div>
+
+          <p style="text-align:center;font-weight:bold">
+            ${esc(org?.name || "Independent Participant")}
+          </p>
+
+          <p style="text-align:center">
+            For successfully completing the approved
+            green action under IGEN GREENDAY 2026.
+          </p>
+
+          <div class="cert-details">
+            <div class="cert-detail">
+              <b>Project Title:</b> ${esc(a.title)}
+            </div>
+            <div class="cert-detail">
+              <b>Category:</b>
+              ${esc(ACT[a.cat]?.n || a.cat)}
+            </div>
+            <div class="cert-detail">
+              <b>Element:</b> ${esc(a.el)}
+            </div>
+            <div class="cert-detail">
+              <b>Certificate ID:</b> ${esc(id)}
+            </div>
+            <div class="cert-detail">
+              <b>Approval Date:</b>
+              ${esc(fmt(a.verifiedAt) || "Verified")}
+            </div>
+            <div class="cert-detail">
+              <b>Programme:</b> IGEN GREENDAY 2026
+            </div>
+          </div>
+
+         <div class="cert-signature">
+  <div class="cert-signature">
+  <div class="signature-space">
+    <img
+      src="./signature.png"
+      alt="Authorised Signature"
+      class="signature-image"
+    />
+  </div>
+  <div class="signature-line"></div>
+  <b>Authorised Signatory</b><br>
+  The Institution of Green Engineers
+</div>
+        </section>
+
+        <button class="btn g no-print"
+          data-print="${esc(a.id)}">
+          Download / Save as PDF
+        </button>`;
+    }).join("");
+},
 verify(){if(!ME.admin)return `<h1>Organiser login</h1><form class="card" id="fPass"><label class="f" for="pw">Passcode</label><input id="pw" name="pw" type="password" required autocomplete="current-password"><button class="btn g" style="margin-top:14px">Open review page</button></form>`;
  const p=S.actions.filter(a=>a.status==="pending").sort((a,b)=>a.createdAt.localeCompare(b.createdAt)),r=S.actions.filter(a=>a.status!=="pending").sort((a,b)=>(b.verifiedAt||"").localeCompare(a.verifiedAt||"")).slice(0,15);
  return `<h1>Review submissions</h1>${S.pending&&S.pending.length?`<h3>Organisation registrations (${S.pending.length})</h3>`+S.pending.map(o=>`<div class="card item" style="margin-bottom:10px"><div style="flex:1;min-width:220px"><b>${esc(o.name)}</b> <span class="small mut">· ${esc(o.type)}</span><br><span class="small">${esc(o.contact)} · ${esc(o.email)} · ${esc(o.phone||"")} · ${esc(o.city||"")}</span></div><div class="row"><button class="btn g s" data-org="approved" data-id="${esc(o.id)}">Approve</button><button class="btn o s" style="color:var(--bad)" data-org="rejected" data-id="${esc(o.id)}">Reject</button></div></div>`).join(""):""}<h3>Waiting (${p.length})</h3>`+(p.length?p.map(a=>`<div class="card item" style="margin-bottom:10px"><div style="flex:1;min-width:220px"><b>${esc(a.title)}</b><br><span class="small mut">${esc(a.userName)} · ${esc(a.orgName||"Independent")} · ${fmt(a.createdAt)}</span><br>${elchip(a.el)} <span class="pts">${a.points} pts</span><p class="small">${esc(a.activity)}</p><p class="small">${esc(a.desc)}</p>
@@ -180,7 +442,8 @@ verify(){if(!ME.admin)return `<h1>Organiser login</h1><form class="card" id="fPa
 /* ---------- shell ---------- */
 const FORMS=["join","submit","register"];
 function chrome(r){const m=me();
- const L=[["home","Home"],["board","Leaderboard"],["register","Register org"],["join",m?"Profile":"Join"],["submit","Submit action"],["mine","My actions"]];if(ME.admin)L.push(["verify","Review"]);
+ const L=[["home","Home"],["board","Leaderboard"],["register","Register org"],["join",m?"Profile":"Join"],["submit","Submit action"],["mine","My actions"],
+["certificates","My Certificate"]];if(ME.admin)L.push(["verify","Review"]);
  $("#nav").innerHTML=`<b><img src="logo.png" alt="IGEN GREENDAY 2026" onerror="this.replaceWith('🌍 IGEN GREENDAY')" style="height:40px;width:auto;display:block;background:#fff;padding:3px 10px;border-radius:10px"></b>`+L.map(x=>`<a href="#${x[0]}" ${r===x[0]||(r==="done"&&x[0]==="mine")?'class="on" aria-current="page"':""}>${x[1]}</a>`).join("")}
 function render(force){let r=location.hash.slice(1)||"home";if(!V[r])r="home";
  if(mode==="wait"){chrome(r);if(!$("#view").innerHTML)$("#view").innerHTML=`<div class="empty">Loading…</div>`;return}
@@ -198,6 +461,26 @@ document.addEventListener("change",e=>{const t=e.target;
  if(t.id==="ac"){const c=ACT[document.querySelector('[name=cat]:checked').value];$("#own").hidden=t.value!=="own";$("#ow").required=t.value==="own";if(t.value!==""&&t.value!=="own")$("#el").value=c.l[+t.value][1]}
  });
 document.addEventListener("click",async e=>{const t=e.target;
+ if (t.dataset.print) {
+  const section = document.getElementById("cert-" + t.dataset.print);
+
+  if (section) {
+    document.querySelectorAll(".print-target")
+      .forEach(x => x.classList.remove("print-target"));
+
+    section.classList.add("print-target");
+    document.body.classList.add("printing-cert");
+
+    window.print();
+
+    setTimeout(() => {
+      section.classList.remove("print-target");
+      document.body.classList.remove("printing-cert");
+    }, 1000);
+  }
+
+  return;
+}
  if(t.dataset.zoom!==undefined){$("#zoom img").src=t.src;$("#zoom").style.display="grid"}
  else if(t.closest("#zoom"))$("#zoom").style.display="none";
  if(t.dataset.copy!==undefined){const x=$("#cap");try{await navigator.clipboard.writeText(x.value)}catch(_){x.select();document.execCommand("copy")}toast("Copied. Paste it in the LinkedIn group")}
